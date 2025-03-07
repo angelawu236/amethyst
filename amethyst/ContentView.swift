@@ -15,7 +15,7 @@ struct ContentView: View {
                 .edgesIgnoringSafeArea(.all) // Extend to edges
             
             LazyVStack {
-                Text("hello worlddd!")
+                Text("hello worlddd!").font(Font.custom("RobotoMono-Medium", size: 32))
                     .foregroundColor(colorManager.paleText)
             }
             .padding()

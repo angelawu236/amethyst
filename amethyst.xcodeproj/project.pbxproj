@@ -29,9 +29,38 @@
 		2E3C8EC02D7A934E00B697C7 /* amethystUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = amethystUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		2E3C8EE42D7AE8E800B697C7 /* Exceptions for "amethyst" folder in "amethystTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"assets/RobotoMono-Medium.ttf",
+			);
+			target = 2E3C8EB52D7A934E00B697C7 /* amethystTests */;
+		};
+		2E3C8EE52D7AE8E800B697C7 /* Exceptions for "amethyst" folder in "amethystUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"assets/RobotoMono-Medium.ttf",
+			);
+			target = 2E3C8EBF2D7A934E00B697C7 /* amethystUITests */;
+		};
+		2E3C8EE72D7AE97500B697C7 /* Exceptions for "amethyst" folder in "amethyst" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 2E3C8EA52D7A934C00B697C7 /* amethyst */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		2E3C8EA82D7A934C00B697C7 /* amethyst */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2E3C8EE72D7AE97500B697C7 /* Exceptions for "amethyst" folder in "amethyst" target */,
+				2E3C8EE42D7AE8E800B697C7 /* Exceptions for "amethyst" folder in "amethystTests" target */,
+				2E3C8EE52D7AE8E800B697C7 /* Exceptions for "amethyst" folder in "amethystUITests" target */,
+			);
 			path = amethyst;
 			sourceTree = "<group>";
 		};
@@ -398,6 +427,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"amethyst/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = amethyst/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -426,6 +456,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"amethyst/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = amethyst/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
