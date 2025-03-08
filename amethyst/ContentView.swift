@@ -11,14 +11,15 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         ZStack {
-            colorManager.greenBg // Background color
-                .edgesIgnoringSafeArea(.all) // Extend to edges
-            
-            LazyVStack {
-                Text("hello worlddd!").font(Font.custom("RobotoMono-Medium", size: 32))
-                    .foregroundColor(colorManager.paleText)
+            colorManager.greenBg
+                .edgesIgnoringSafeArea(.all)
+            NavigationStack{
+                ScrollView{
+                    titleView()
+                }
+                .background(colorManager.greenBg)
             }
-            .padding()
+            .padding(.horizontal, 25)
         }
     }
 }
