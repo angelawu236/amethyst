@@ -9,5 +9,6 @@ struct colorManager {
     static let greenBg = Color("primary-bg")
     static let paleText = Color("pale-text")
     static let darkBlue = Color("dark-blue")
+    static let paleBlue = Color("pale-blue")
 }
 

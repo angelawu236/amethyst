@@ -12,10 +12,10 @@ struct titleView: View {
         HStack(alignment: .top, spacing: 0){
             
             VStack(alignment: .leading){
-                Text("My").font(Font.custom("RobotoMono-Medium", size: 55))
+                Text("My").font(Font.custom("RobotoMono-Medium", size: 60))
                     .foregroundColor(colorManager.paleText)
                     
-                Text("Media").font(Font.custom("RobotoMono-Medium", size: 55))
+                Text("Media").font(Font.custom("RobotoMono-Medium", size: 60))
                     .foregroundColor(colorManager.paleText)
             }
             .frame(maxWidth: .infinity, alignment: .leading)

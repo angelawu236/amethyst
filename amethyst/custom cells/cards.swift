@@ -13,21 +13,18 @@ struct cards: View {
     var body: some View {
             VStack (alignment: .leading, spacing: 10){
                 Text(title.title).font(Font.custom("RobotoMono-Medium", size: 35))
-                    .foregroundColor(colorManager.paleText)
+                    .foregroundColor(colorManager.paleBlue)
                 ScrollView(.horizontal){
-                    HStack{
-                        Image(.media)
-                            .frame(width: 220, height: 155)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                        Image(.media)
-                            .resizable().frame(width: 145, height: 145)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                        Image(.media)
-                            .resizable().frame(width: 145, height: 145)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                        Image(.media)
-                            .resizable().frame(width: 145, height: 145)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    HStack(spacing: 25){
+                        ForEach(title.imageName, id: \.self){ imageName in
+                            Image(imageName)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 250, height: 200, alignment: .center)
+                                .clipped()
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                        }
+ 
                     }
                 }
             }
@@ -37,7 +34,7 @@ struct cards: View {
 struct cards_Previews: PreviewProvider {
     static var previews: some View {
         VStack (alignment: .leading, spacing:30){
-            cards(title: titles.anime())
+            cards(title: titles.shows())
             cards(title: titles.movies())
 //            cards(title: titles.movies())
         }
