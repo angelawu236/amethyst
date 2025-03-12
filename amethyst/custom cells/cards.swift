@@ -21,8 +21,14 @@ struct cards: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 250, height: 200, alignment: .center)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .inset(by: 1.5)
+                                        .stroke(colorManager.darkBlue, lineWidth: 5)
+                                    )
                                 .clipped()
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
+                                
                         }
  
                     }
