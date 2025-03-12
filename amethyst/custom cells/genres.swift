@@ -10,7 +10,9 @@ struct genres: View {
     @State private var title = titles.all
     
     var body: some View {
-        Text("hi")
+        Text("Anime").font(.custom("RobotoMono-Medium", size: 25))
+            .padding(15)
+            .frame(width: 250, height: 66.67, alignment: .leading)
             .foregroundColor(colorManager.paleBlue)
             .background(colorManager.darkBlue)
     }
