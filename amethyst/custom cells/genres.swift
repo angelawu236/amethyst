@@ -2,10 +2,12 @@
 //  genres.swift
 //  amethyst
 //
+//  Used in cards
 //  Created by Angela Wu on 3/11/25.
 //
 import SwiftUI
-//
+
+
 struct genres: View {
     @State private var title = titles.all
     

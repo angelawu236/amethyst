@@ -33,7 +33,6 @@ struct cards: View {
                                 )
                             .clipped()
                             .clipShape(RoundedRectangle(cornerRadius: 10))
-
                                 
                         }
  
@@ -47,7 +46,7 @@ struct cards_Previews: PreviewProvider {
     static var previews: some View {
         VStack (alignment: .leading, spacing:30){
             cards(title: titles.shows())
-            cards(title: titles.movies())
+//            cards(title: titles.movies())
 //            cards(title: titles.movies())
         }
     }

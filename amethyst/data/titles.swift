@@ -16,7 +16,7 @@ struct titles:Identifiable {
     [titles(title: "Movies", imageName: ["media","media","media","media"]),
      titles(title: "Shows", imageName: ["show","show","show","show"]),
          titles(title: "Documentaries",imageName: ["documentary","documentary","documentary","documentary"]),
-         titles(title: "Reality TV",imageName: ["tv","tv","tv","tv"])]
+         titles(title: "C Dramas",imageName: ["drama","drama","drama","drama"])]
     
     
     
