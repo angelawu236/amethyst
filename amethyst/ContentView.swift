@@ -12,24 +12,27 @@ struct ContentView: View {
     @State private var title = titles.all
     
     var body: some View {
-        ZStack {
-            colorManager.greenBg
-                .edgesIgnoringSafeArea(.all)
+        NavigationView{
+            ZStack {
+                colorManager.greenBg
+                    .edgesIgnoringSafeArea(.all)
 
-            ScrollView(showsIndicators: false){
-                    titleView()
-                        VStack (alignment: .leading, spacing:30){
-                            ForEach(title){ title in
-                                cards(title: title)
+                ScrollView(showsIndicators: false){
+                        titleView()
+                            VStack (alignment: .leading, spacing:30){
+                                ForEach(title){ title in
+                                    cards(title: title)
+                                }
                             }
-                        }
-                                            
-                }
-                .background(colorManager.greenBg)
-            
-            
-            .padding(.horizontal, 25)
+                                                
+                    }
+                    .background(colorManager.greenBg)
+                
+                
+                .padding(.horizontal, 25)
+            }
         }
+
     }
 }
 
