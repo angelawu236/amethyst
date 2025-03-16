@@ -8,21 +8,26 @@
 import SwiftUI
 
 struct favoritesCell: View {
-    let favorite: favoriteTitles
+    let favorite: titles
     
     var body: some View {
-        HStack (spacing: 40){
-            Image(favorite.favoriteImage)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 130, height: 100, alignment: .center)
-            Image(favorite.favoriteImage)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 130, height: 100, alignment: .center)
+        let array = Array(favorite.favoriteTitles)
+        let secondPair = array[1]
+        let firstPair = array[0]
+        HStack (spacing: 50){
+                Image(firstPair.value)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 150, height: 200, alignment: .center)
+                    .clipped()
+                Image(secondPair.value)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 150, height: 200, alignment: .center)
+                    .clipped()
         }
     }
 }
 #Preview {
-    favoritesCell(favorite: favoriteTitles.fav())
+    favoritesCell(favorite: titles.movies())
 }

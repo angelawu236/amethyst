@@ -7,9 +7,12 @@
 import SwiftUI
 
 struct genreCell: View {
+//    @State private var favorite = favoriteTitles.allFavoriteTitles
+    
     var body: some View {
-//        favoritesCell()
-        Text("hi")
+        VStack{
+            favoritesCell(favorite: titles.movies())
+        }
     }
 }
 #Preview {

@@ -24,7 +24,9 @@ struct genreViews: View {
         ZStack{
             colorManager.greenBg
                 .edgesIgnoringSafeArea(.all)
-            genreCell()
+            VStack{
+                genreCell()
+            }
         }
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: btnBack)
