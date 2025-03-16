@@ -20,7 +20,6 @@ struct genres: View {
                     .foregroundColor(colorManager.paleBlue)
                     .background(colorManager.darkBlue)
             }
-        
     }
 }
 
