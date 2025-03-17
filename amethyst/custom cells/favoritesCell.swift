@@ -20,11 +20,22 @@ struct favoritesCell: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 150, height: 200, alignment: .center)
                     .clipped()
+                    .overlay(
+                        Rectangle()
+                            .inset(by: 1.5)
+                            .stroke(colorManager.darkBlue, lineWidth: 5)
+                        )
                 Image(secondPair.value)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 150, height: 200, alignment: .center)
                     .clipped()
+                    .overlay(
+                        Rectangle()
+                            .inset(by: 1.5)
+                            .stroke(colorManager.darkBlue, lineWidth: 5)
+                        )
+            
         }
     }
 }

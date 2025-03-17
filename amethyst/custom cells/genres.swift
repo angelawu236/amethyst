@@ -13,7 +13,7 @@ struct genres: View {
     let genreName: String
     
     var body: some View {
-            NavigationLink(destination:genreViews()){
+        NavigationLink(destination:genreViews(media:"Movies")){
                 Text(genreName).font(.custom("RobotoMono-Medium", size: 25))
                     .padding(15)
                     .frame(width: 250, height: 66.67, alignment: .leading)

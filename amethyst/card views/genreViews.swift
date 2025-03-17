@@ -9,6 +9,9 @@ import SwiftUI
 struct genreViews: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    @State private var title = titles.all
+    let media: String
+    
     var btnBack : some View { Button(action: {
             self.presentationMode.wrappedValue.dismiss()
             }) {
@@ -16,7 +19,7 @@ struct genreViews: View {
                     Text("Home").font(Font.custom("RobotoMono-Medium", size: 23))
                         .foregroundStyle(colorManager.paleText)
                 }
-                .padding(.horizontal,10)
+                .padding(.horizontal, 10)
             }
         }
     
@@ -25,7 +28,7 @@ struct genreViews: View {
             colorManager.greenBg
                 .edgesIgnoringSafeArea(.all)
             VStack{
-                genreCell()
+                genreCell(title: titles.movies())
             }
         }
             .navigationBarBackButtonHidden(true)
@@ -35,6 +38,6 @@ struct genreViews: View {
 
 #Preview {
     NavigationView{
-        genreViews()
+        genreViews(media:"Movies")
     }
 }
