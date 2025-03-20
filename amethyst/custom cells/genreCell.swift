@@ -14,8 +14,11 @@ struct genreCell: View {
     let index: Int
     
     var body: some View {
-        VStack{
+        VStack(spacing: 30){
             favoritesCell(media:media, genre: genre)
+            Text(genre).foregroundStyle(colorManager.paleBlue).font(.custom("RobotoMono-Medium", size: 30))
+            watchList()
+                .padding(.horizontal, 25)
         }
     }
 }

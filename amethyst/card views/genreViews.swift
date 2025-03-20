@@ -29,7 +29,7 @@ struct genreViews: View {
         ZStack{
             colorManager.greenBg
                 .edgesIgnoringSafeArea(.all)
-            VStack{
+            VStack(alignment: .leading, spacing:30){
                 genreCell(media: media,genre:genre,index:index)
             }
         }
