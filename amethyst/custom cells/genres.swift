@@ -29,6 +29,6 @@ struct genres: View {
 struct genres_Previews: PreviewProvider {
     static var previews: some View {
         cards(title: titles.shows())
-            .overlay(genres(genreName: "hi", index: 1, media:"Movies"))
+            .overlay(genres(genreName: "Romance", index: 1, media:"Movies"))
     }
 }

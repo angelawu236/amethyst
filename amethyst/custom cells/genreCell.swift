@@ -15,7 +15,7 @@ struct genreCell: View {
     
     var body: some View {
         VStack{
-            favoritesCell(media:media)
+            favoritesCell(media:media, genre: genre)
         }
     }
 }

@@ -10,9 +10,13 @@ import SwiftUI
 struct favoritesCell: View {
 //    let favorite: titles
     let media: String
-    var favorites: [String: String] {
+    let genre: String
+    var favoritesGroup: [String: [String: String]] {
             titles.all.first(where: { $0.title == media })?.favoriteTitles ?? [:]
         }
+    var favorites: [String:String]{
+        favoritesGroup[genre] ?? [:]
+    }
     var body: some View {
         let array = Array(favorites)
         let secondPair = array[1]
@@ -43,5 +47,5 @@ struct favoritesCell: View {
     }
 }
 #Preview {
-    favoritesCell(media: "Movies")
+    favoritesCell(media: "Movies", genre: "Romance")
 }

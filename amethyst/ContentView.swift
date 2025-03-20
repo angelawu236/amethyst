@@ -24,7 +24,6 @@ struct ContentView: View {
                                     cards(title: title)
                                 }
                             }
-                                                
                     }
                     .background(colorManager.greenBg)
                 
