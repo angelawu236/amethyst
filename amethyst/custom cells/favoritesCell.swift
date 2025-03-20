@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct favoritesCell: View {
-    let favorite: titles
-    
+//    let favorite: titles
+    let media: String
+    var favorites: [String: String] {
+            titles.all.first(where: { $0.title == media })?.favoriteTitles ?? [:]
+        }
     var body: some View {
-        let array = Array(favorite.favoriteTitles)
+        let array = Array(favorites)
         let secondPair = array[1]
         let firstPair = array[0]
         HStack (spacing: 50){
@@ -40,5 +43,5 @@ struct favoritesCell: View {
     }
 }
 #Preview {
-    favoritesCell(favorite: titles.movies())
+    favoritesCell(media: "Movies")
 }

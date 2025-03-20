@@ -6,9 +6,12 @@
 //
 import SwiftUI
 
+var media = "String"
+
 
 struct cards: View {
     let title: titles
+    
     
     var body: some View {
         VStack (alignment: .leading, spacing: 10){
@@ -22,7 +25,7 @@ struct cards: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 250, height: 200, alignment: .center)
-                            genres(genreName: title.genre[index])
+                            genres(genreName: title.genre[index], index: index, media: title.title)
                                     .contentShape(Rectangle())
                         }
                         .overlay(
@@ -32,7 +35,6 @@ struct cards: View {
                         )
                         .clipped()
                         .clipShape(RoundedRectangle(cornerRadius: 10))
-                        
                     }
                     
                 }

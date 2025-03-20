@@ -11,6 +11,8 @@ struct genreViews: View {
     
     @State private var title = titles.all
     let media: String
+    let genre: String
+    let index: Int
     
     var btnBack : some View { Button(action: {
             self.presentationMode.wrappedValue.dismiss()
@@ -28,7 +30,7 @@ struct genreViews: View {
             colorManager.greenBg
                 .edgesIgnoringSafeArea(.all)
             VStack{
-                genreCell(title: titles.movies())
+                genreCell(media: media,genre:genre,index:index)
             }
         }
             .navigationBarBackButtonHidden(true)
@@ -38,6 +40,6 @@ struct genreViews: View {
 
 #Preview {
     NavigationView{
-        genreViews(media:"Movies")
+        genreViews(media:"Movies", genre: "Romance", index: 2)
     }
 }

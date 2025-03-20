@@ -8,14 +8,17 @@ import SwiftUI
 
 struct genreCell: View {
 //    @State private var favorite = favoriteTitles.allFavoriteTitles
-    let title: titles
+//    let title: titles
+    let media: String
+    let genre: String
+    let index: Int
     
     var body: some View {
         VStack{
-            favoritesCell(favorite: title)
+            favoritesCell(media:media)
         }
     }
 }
 #Preview {
-    genreCell(title:titles.movies())
+    genreCell(media:"Movies",genre:"Romance",index:0)
 }
