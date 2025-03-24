@@ -17,7 +17,7 @@ struct genreCell: View {
         VStack(spacing: 30){
             favoritesCell(media:media, genre: genre)
             Text(genre).foregroundStyle(colorManager.paleBlue).font(.custom("RobotoMono-Medium", size: 30))
-            watchList()
+//            watchList()
                 .padding(.horizontal, 25)
         }
     }

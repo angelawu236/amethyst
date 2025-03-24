@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct ContentView: View {
     @State private var title = titles.all
     
@@ -31,7 +30,6 @@ struct ContentView: View {
                 .padding(.horizontal, 25)
             }
         }
-
     }
 }
 
