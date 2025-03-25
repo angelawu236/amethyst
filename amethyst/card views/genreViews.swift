@@ -31,7 +31,9 @@ struct genreViews: View {
                 .edgesIgnoringSafeArea(.all)
             VStack(alignment: .leading, spacing:30){
                 genreCell(media: media,genre:genre,index:index)
+                Spacer()
             }
+            .padding(.top, 30)
         }
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: btnBack)

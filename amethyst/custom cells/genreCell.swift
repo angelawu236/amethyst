@@ -17,8 +17,18 @@ struct genreCell: View {
         VStack(spacing: 30){
             favoritesCell(media:media, genre: genre)
             Text(genre).foregroundStyle(colorManager.paleBlue).font(.custom("RobotoMono-Medium", size: 30))
-//            watchList()
-                .padding(.horizontal, 25)
+            HStack(spacing: 20){
+                Text("Name").frame(width: 100, alignment: .leading)
+                    .font(.custom("RobotoMono-Medium", size: 20))
+                    .foregroundStyle(colorManager.paleText)
+                Text("Rating").frame(width: 100, alignment: .leading)
+                    .font(.custom("RobotoMono-Medium", size: 20))
+                    .foregroundStyle(colorManager.paleText)
+                Text("Comment").frame(width: 100, alignment: .leading)
+                    .font(.custom("RobotoMono-Medium", size: 20))
+                    .foregroundStyle(colorManager.paleText)
+            }
+            watchList(media: "Movies", genre: "Romance")                .padding(.horizontal, 25)
         }
     }
 }
