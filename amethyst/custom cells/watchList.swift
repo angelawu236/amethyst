@@ -9,6 +9,12 @@ import SwiftUI
 import SwiftData
 
 struct watchList: View {
+    enum FocusableField: Hashable, CaseIterable{
+        case nameInput, ratingInput, commentInput
+    }
+    
+    @FocusState private var focusedField: FocusableField?
+    
     @Environment(\.modelContext) private var modelContext
     @Query private var watchItems: [watchItem]
     
@@ -23,51 +29,73 @@ struct watchList: View {
     
     
     var body: some View {
-
-        VStack(spacing: 10){
-            //display existing rows
-            ForEach(watchItems){item in
-                @Bindable var item = item
-                HStack(spacing: 20){
-                    TextField("", text: $item.name)
-                        .frame(width: 100)
-                    TextField("", text: $item.rating)
-                        .frame(width: 100)
-                    TextField("", text: $item.comments)
-                        .frame(width: 100)
-                }
-            }
+        ScrollViewReader { scrollProxy in
+            ScrollView(showsIndicators: false){
             
-           //to add a row
+            VStack(spacing: 10){
+                //display existing rows
+                ForEach(watchItems){item in
+                    @Bindable var item = item
+                    HStack(spacing: 20){
+                        TextField("", text: $item.name)
+                            .font(Font.custom("RobotoMono-Medium", size: 17))
+                            .frame(width: 100)
+                        TextField("", text: $item.rating)
+                            .font(Font.custom("RobotoMono-Medium", size: 17))
+                            .frame(width: 100)
+                        TextField("", text: $item.comments)
+                            .font(Font.custom("RobotoMono-Medium", size: 17))
+                            .frame(width: 100)
+                    }
+                }
+                
+                //to add a row
                 HStack(spacing: 20) {
-                    TextField("", text: $nameInput,prompt: Text("Name").foregroundColor(colorManager.paleText))
-                        .foregroundColor(colorManager.paleText)
-                        .font(Font.custom("RobotoMono-Medium", size: 20))
+                    TextField("", text: $nameInput,prompt: Text("Name").foregroundColor(.black))
+                        .opacity(0.5)
                         .frame(width: 100, alignment: .leading)
+                        .focused($focusedField, equals: .nameInput)
                         .onSubmit{
                             saveOrUpdateField(field: "name", value: nameInput)
                             nameInput = ""
                         }
                     
-                    TextField("", text: $ratingInput, prompt: Text("Rating").foregroundColor(colorManager.paleText))
-                        .foregroundColor(colorManager.paleText)
-                        .font(Font.custom("RobotoMono-Medium", size: 20))
+                    TextField("", text: $ratingInput, prompt: Text("Rating").foregroundColor(.black))
+                        .opacity(0.5)
                         .frame(width: 100, alignment: .leading)
+                        .focused($focusedField, equals: .ratingInput)
                         .onSubmit{
                             saveOrUpdateField(field: "rating", value: ratingInput)
                             ratingInput = ""
                         }
                     
-                    TextField("", text: $commentInput, prompt: Text("Comments").foregroundColor(colorManager.paleText))
-                        .foregroundColor(colorManager.paleText)
-                        .font(Font.custom("RobotoMono-Medium", size: 20))
+                    TextField("", text: $commentInput, prompt: Text("Comments").foregroundColor(.black))
+                        .opacity(0.5)
                         .frame(width: 100, alignment: .leading)
+                        .focused($focusedField, equals: .commentInput)
                         .onSubmit{
                             saveOrUpdateField(field: "comments", value: commentInput)
                             commentInput = ""
                         }
+                    }
                 }
+                .onChange(of: focusedField) {
+                    if let field = focusedField {
+                        withAnimation {
+                            switch field {
+                            case .nameInput:
+                                scrollProxy.scrollTo("input_name", anchor: .center)
+                            case .ratingInput:
+                                scrollProxy.scrollTo("input_rating", anchor: .center)
+                            case .commentInput:
+                                scrollProxy.scrollTo("input_comment", anchor: .center)
+                            }
+                        }
+                    }
+                }
+            }
         }
+ 
 
     }
     

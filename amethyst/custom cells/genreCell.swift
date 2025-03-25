@@ -14,7 +14,7 @@ struct genreCell: View {
     let index: Int
     
     var body: some View {
-        VStack(spacing: 30){
+        VStack(spacing: 20){
             favoritesCell(media:media, genre: genre)
             Text(genre).foregroundStyle(colorManager.paleBlue).font(.custom("RobotoMono-Medium", size: 30))
             HStack(spacing: 20){
@@ -24,7 +24,7 @@ struct genreCell: View {
                 Text("Rating").frame(width: 100, alignment: .leading)
                     .font(.custom("RobotoMono-Medium", size: 20))
                     .foregroundStyle(colorManager.paleText)
-                Text("Comment").frame(width: 100, alignment: .leading)
+                Text("Comments").frame(width: 100, alignment: .leading)
                     .font(.custom("RobotoMono-Medium", size: 20))
                     .foregroundStyle(colorManager.paleText)
             }
