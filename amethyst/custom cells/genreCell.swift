@@ -17,18 +17,24 @@ struct genreCell: View {
         VStack(spacing: 20){
             favoritesCell(media:media, genre: genre)
             Text(genre).foregroundStyle(colorManager.paleBlue).font(.custom("RobotoMono-Medium", size: 30))
-            HStack(spacing: 20){
-                Text("Name").frame(width: 100, alignment: .leading)
-                    .font(.custom("RobotoMono-Medium", size: 20))
-                    .foregroundStyle(colorManager.paleText)
-                Text("Rating").frame(width: 100, alignment: .leading)
-                    .font(.custom("RobotoMono-Medium", size: 20))
-                    .foregroundStyle(colorManager.paleText)
-                Text("Comments").frame(width: 100, alignment: .leading)
-                    .font(.custom("RobotoMono-Medium", size: 20))
-                    .foregroundStyle(colorManager.paleText)
+            ScrollView(.vertical, showsIndicators: false){
+                ScrollView(.horizontal, showsIndicators: false){
+                    HStack(spacing: 20){
+                        Text("Name").frame(width: 200, alignment: .leading)
+                            .font(.custom("RobotoMono-Medium", size: 20))
+                            .foregroundStyle(colorManager.paleText)
+                        Text("Rating").frame(width: 200, alignment: .leading)
+                            .font(.custom("RobotoMono-Medium", size: 20))
+                            .foregroundStyle(colorManager.paleText)
+                        Text("Comments").frame(width: 200, alignment: .leading)
+                            .font(.custom("RobotoMono-Medium", size: 20))
+                            .foregroundStyle(colorManager.paleText)
+                    }
+                
+                watchList(media: "Movies", genre: "Romance")
             }
-            watchList(media: "Movies", genre: "Romance")                .padding(.horizontal, 25)
+                .padding(.horizontal, 28)
+            }
         }
     }
 }

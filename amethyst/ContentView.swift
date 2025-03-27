@@ -11,7 +11,7 @@ struct ContentView: View {
     @State private var title = titles.all
     
     var body: some View {
-        NavigationView{
+        NavigationStack{
             ZStack {
                 colorManager.greenBg
                     .edgesIgnoringSafeArea(.all)

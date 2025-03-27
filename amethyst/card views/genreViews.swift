@@ -17,27 +17,37 @@ struct genreViews: View {
     var btnBack : some View { Button(action: {
             self.presentationMode.wrappedValue.dismiss()
             }) {
-                HStack (){
-                    Text("Home").font(Font.custom("RobotoMono-Medium", size: 23))
-                        .foregroundStyle(colorManager.paleText)
+                ZStack{
+                    HStack (){
+                        Text("Home").font(Font.custom("RobotoMono-Medium", size: 23))
+                            .foregroundStyle(colorManager.paleText)
+                    }
+                    .padding(.horizontal, 10)
                 }
-                .padding(.horizontal, 10)
             }
         }
     
     var body: some View {
+        
         ZStack{
             colorManager.greenBg
-                .edgesIgnoringSafeArea(.all)
-            VStack(alignment: .leading, spacing:30){
-                genreCell(media: media,genre:genre,index:index)
-                Spacer()
+                .ignoresSafeArea(.all)
+            ScrollViewReader { scrollProxy in
+                ScrollView(showsIndicators: false){
+                    VStack(alignment: .leading, spacing:30){
+                        genreCell(media: media,genre:genre,index:index)
+                        Spacer()
+                    }
+                    .padding(.top, 30)
+                    .background(colorManager.greenBg)
+                }
             }
-            .padding(.top, 30)
         }
+        .toolbarBackgroundVisibility(.hidden)
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: btnBack)
     }
+    
 }
 
 #Preview {
