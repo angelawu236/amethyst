@@ -34,93 +34,117 @@ struct watchList: View {
     
     var body: some View {
 
-        ScrollView (.vertical, showsIndicators: false){
-        VStack(spacing: 10){
-            //ScrollView
-            ScrollViewReader{ proxy in
-//                ScrollView (.vertical, showsIndicators: false){
-                        ForEach(watchItems){item in
-                            @Bindable var item = item
-                            ZStack(alignment: .leading){
-                                HStack(spacing: 20){
-                                    TextField("", text: $item.name)
-                                        .font(Font.custom("RobotoMono-Medium", size: 17))
-                                        .frame(width: 200)
-                                    TextField("", text: $item.rating)
-                                        .font(Font.custom("RobotoMono-Medium", size: 17))
-                                        .frame(width: 100)
-                                    TextField("", text: $item.comments)
-                                        .font(Font.custom("RobotoMono-Medium", size: 17))
-                                        .frame(width: 200)
-                                }
-                                if editView {
-                                    Button(action: {
-                                        modelContext.delete(item)
-                                    }) {
-                                        Image(systemName: "minus.circle")
-                                            .symbolRenderingMode(.hierarchical)
-                                            .foregroundStyle(colorManager.paleText)
-                                            .font(.system(size: 17))
-                                    }
-                                    .offset(x: -32)
-                                }
+        let rowHeight: CGFloat = 40
+
+        ScrollView(.vertical, showsIndicators: false) {
+            ZStack(alignment: .topLeading) {
+                
+                VStack(spacing: 0) {
+                    Color.clear
+                        .frame(height: CGFloat(watchItems.count) * rowHeight)
+                        .background(
+                            HStack(spacing: 0) {
+                                Color.clear.frame(width: 200)
+                                Rectangle().frame(width: 1).foregroundStyle(.black.opacity(0.6))
+
+                                Color.clear.frame(width: 110)
+                                Rectangle().frame(width: 1).foregroundStyle(.black.opacity(0.6))
+
+                                Color.clear.frame(width: 200)
                             }
-                            
+                        )
+                }
+
+                VStack(spacing: 0) {
+                    ForEach(watchItems) { item in
+                        @Bindable var item = item
+
+                        ZStack(alignment: .leading) {
+                            HStack(spacing: 0) {
+                                TextField("", text: $item.name)
+                                    .font(.custom("RobotoMono-Medium", size: 17))
+                                    .frame(width: 200, height: rowHeight)
+                                    .padding(.horizontal, 8)
+
+                                TextField("", text: $item.rating)
+                                    .font(.custom("RobotoMono-Medium", size: 17))
+                                    .frame(width: 100, height: rowHeight)
+                                    .padding(.horizontal, 8)
+
+                                TextField("", text: $item.comments)
+                                    .font(.custom("RobotoMono-Medium", size: 17))
+                                    .frame(width: 200, height: rowHeight)
+                                    .padding(.horizontal, 8)
+                            }
+
+                            if editView {
+                                Button(action: {
+                                    modelContext.delete(item)
+                                }) {
+                                    Image(systemName: "minus.circle")
+                                        .symbolRenderingMode(.hierarchical)
+                                        .foregroundStyle(colorManager.paleText)
+                                        .font(.system(size: 17))
+                                }
+                                .offset(x: -32)
+                            }
                         }
-                    .padding(.horizontal, 35)
-                    
-                        //to add a row
-                        HStack(spacing: 20) {
-                            TextField("", text: $nameInput,prompt: Text("Name").foregroundColor(.black))
-                                .foregroundStyle(.black)
-                                .font(Font.custom("RobotoMono-Medium", size: 17))
-                                .opacity(0.5)
-                                .frame(width: 200, alignment: .leading)
-                                .focused($focusedField, equals: .nameInput)
-                                .id("input_name")
-                                .onChange(of: focusedField){
-                                    updateItem(from: lastFocusedField)
-                                    lastFocusedField = focusedField
-                                }
-                                .onSubmit{
-                                    saveField(field: "name", value: nameInput)
-                                }
-                            
-                            TextField("", text: $ratingInput, prompt: Text("Rating").foregroundColor(.black))
-                                .foregroundStyle(.black)
-                                .font(Font.custom("RobotoMono-Medium", size: 17))
-                                .opacity(0.5)
-                                .frame(width: 100, alignment: .leading)
-                                .focused($focusedField, equals: .ratingInput)
-                                .id("input_rating")
-                                .onChange(of: focusedField){
-                                    updateItem(from: lastFocusedField)
-                                    lastFocusedField = focusedField
-                                }
-                                .onSubmit{
-                                    saveField(field: "rating", value: ratingInput)
-                                }
-                            
-                            TextField("", text: $commentInput, prompt: Text("Comments").foregroundColor(.black))
-                                .foregroundStyle(.black)
-                                .font(Font.custom("RobotoMono-Medium", size: 17))
-                                .opacity(0.5)
-                                .frame(width: 200, alignment: .leading)
-                                .focused($focusedField, equals: .commentInput)
-                                .id("input_comment")
-                                .onChange(of: focusedField){
-                                    updateItem(from: lastFocusedField)
-                                    lastFocusedField = focusedField
-                                }
-                                .onSubmit{
-                                    saveField(field: "comments", value: commentInput)
-                                }
-                        } //hstack for textfields
-                    .padding(.horizontal, 28)
-                } // scroll view reader
-            } //VStack
-        } //scroll view
+                        .overlay(Rectangle().frame(height: 1).foregroundStyle(.black.opacity(0.6)), alignment: .bottom)
+                    }
+                } //vstack
+            } //zstack for grid lines
+            .padding(.horizontal, 35)
+
+            HStack(spacing: 20) {
+                TextField("", text: $nameInput, prompt: Text("Name").foregroundColor(.black))
+                    .foregroundStyle(.black)
+                    .font(.custom("RobotoMono-Medium", size: 17))
+                    .opacity(0.5)
+                    .frame(width: 200, height: rowHeight, alignment: .leading)
+                    .focused($focusedField, equals: .nameInput)
+                    .id("input_name")
+                    .onChange(of: focusedField) {
+                        updateItem(from: lastFocusedField)
+                        lastFocusedField = focusedField
+                    }
+                    .onSubmit {
+                        saveField(field: "name", value: nameInput)
+                    }
+
+                TextField("", text: $ratingInput, prompt: Text("Rating").foregroundColor(.black))
+                    .foregroundStyle(.black)
+                    .font(.custom("RobotoMono-Medium", size: 17))
+                    .opacity(0.5)
+                    .frame(width: 100, height: rowHeight, alignment: .leading)
+                    .focused($focusedField, equals: .ratingInput)
+                    .id("input_rating")
+                    .onChange(of: focusedField) {
+                        updateItem(from: lastFocusedField)
+                        lastFocusedField = focusedField
+                    }
+                    .onSubmit {
+                        saveField(field: "rating", value: ratingInput)
+                    }
+
+                TextField("", text: $commentInput, prompt: Text("Comments").foregroundColor(.black))
+                    .foregroundStyle(.black)
+                    .font(.custom("RobotoMono-Medium", size: 17))
+                    .opacity(0.5)
+                    .frame(width: 200, height: rowHeight, alignment: .leading)
+                    .focused($focusedField, equals: .commentInput)
+                    .id("input_comment")
+                    .onChange(of: focusedField) {
+                        updateItem(from: lastFocusedField)
+                        lastFocusedField = focusedField
+                    }
+                    .onSubmit {
+                        saveField(field: "comments", value: commentInput)
+                    }
+            }
+            .padding(.horizontal, 28)
+        }
         .frame(maxHeight: UIScreen.main.bounds.height * 0.5)
+
 
     }
     

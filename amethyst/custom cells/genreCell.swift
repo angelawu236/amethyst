@@ -60,7 +60,7 @@ struct genreCell: View {
                             Text("Name").frame(width: 200, alignment: .leading)
                                 .font(.custom("RobotoMono-Medium", size: 20))
                                 .foregroundStyle(colorManager.paleText)
-                            Text("Rating").frame(width: 100, alignment: .leading)
+                            Text("Rating").frame(width: 110, alignment: .leading)
                                 .font(.custom("RobotoMono-Medium", size: 20))
                                 .foregroundStyle(colorManager.paleText)
                             Text("Comments").frame(width: 200, alignment: .leading)
