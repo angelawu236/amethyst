@@ -29,6 +29,8 @@ struct watchList: View {
     let media: String
     let genre: String
     
+    let editView: Bool
+    
     
     var body: some View {
 
@@ -39,19 +41,33 @@ struct watchList: View {
 //                ScrollView (.vertical, showsIndicators: false){
                         ForEach(watchItems){item in
                             @Bindable var item = item
-                            HStack(spacing: 20){
-                                TextField("", text: $item.name)
-                                    .font(Font.custom("RobotoMono-Medium", size: 17))
-                                    .frame(width: 200)
-                                TextField("", text: $item.rating)
-                                    .font(Font.custom("RobotoMono-Medium", size: 17))
-                                    .frame(width: 200)
-                                TextField("", text: $item.comments)
-                                    .font(Font.custom("RobotoMono-Medium", size: 17))
-                                    .frame(width: 200)
+                            ZStack(alignment: .leading){
+                                HStack(spacing: 20){
+                                    TextField("", text: $item.name)
+                                        .font(Font.custom("RobotoMono-Medium", size: 17))
+                                        .frame(width: 200)
+                                    TextField("", text: $item.rating)
+                                        .font(Font.custom("RobotoMono-Medium", size: 17))
+                                        .frame(width: 100)
+                                    TextField("", text: $item.comments)
+                                        .font(Font.custom("RobotoMono-Medium", size: 17))
+                                        .frame(width: 200)
+                                }
+                                if editView {
+                                    Button(action: {
+                                        modelContext.delete(item)
+                                    }) {
+                                        Image(systemName: "minus.circle")
+                                            .symbolRenderingMode(.hierarchical)
+                                            .foregroundStyle(colorManager.paleText)
+                                            .font(.system(size: 17))
+                                    }
+                                    .offset(x: -32)
+                                }
                             }
+                            
                         }
-                    .padding(.horizontal, 28)
+                    .padding(.horizontal, 35)
                     
                         //to add a row
                         HStack(spacing: 20) {
@@ -74,7 +90,7 @@ struct watchList: View {
                                 .foregroundStyle(.black)
                                 .font(Font.custom("RobotoMono-Medium", size: 17))
                                 .opacity(0.5)
-                                .frame(width: 200, alignment: .leading)
+                                .frame(width: 100, alignment: .leading)
                                 .focused($focusedField, equals: .ratingInput)
                                 .id("input_rating")
                                 .onChange(of: focusedField){
@@ -143,5 +159,5 @@ struct watchList: View {
 }
 
 #Preview {
-    watchList(media: "Movies", genre: "Romance")
+    watchList(media: "Movies", genre: "Romance", editView: false)
 }
