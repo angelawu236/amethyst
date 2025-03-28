@@ -21,7 +21,7 @@ struct favoritesCell: View {
         let array = Array(favorites)
         let secondPair = array[1]
         let firstPair = array[0]
-        HStack (spacing: 50){
+        HStack (spacing: 40){
                 Image(firstPair.value)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -44,6 +44,7 @@ struct favoritesCell: View {
                         )
             
         }
+        .padding(.horizontal, 20)
     }
 }
 #Preview {

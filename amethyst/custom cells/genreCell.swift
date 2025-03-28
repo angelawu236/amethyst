@@ -37,40 +37,48 @@ struct genreCell: View {
             if !editView{
                 ScrollView(.vertical, showsIndicators: false){
                     ScrollView(.horizontal, showsIndicators: false){
-                        HStack(spacing: 20){
-                            Text("Name").frame(width: 200, alignment: .leading)
+                        HStack(spacing: 0){
+                            Text("Name").frame(width: 216, alignment: .leading)
                                 .font(.custom("RobotoMono-Medium", size: 20))
                                 .foregroundStyle(colorManager.paleText)
-                            Text("Rating").frame(width: 100, alignment: .leading)
+                            Text("Rating").frame(width: 126, alignment: .leading)
                                 .font(.custom("RobotoMono-Medium", size: 20))
                                 .foregroundStyle(colorManager.paleText)
-                            Text("Comments").frame(width: 200, alignment: .leading)
+                            Text("Comments").frame(width: 316, alignment: .leading)
                                 .font(.custom("RobotoMono-Medium", size: 20))
                                 .foregroundStyle(colorManager.paleText)
                         }
-                    
+                        .padding(.horizontal, 20)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        
                         watchList(media: "Movies", genre: "Romance", editView: false)
                 }
-                    .padding(.trailing, 25)
+                    
+                    
+//                    .padding(.trailing, 25)
                 }
             } else {
                 ScrollView(.vertical, showsIndicators: false){
                     ScrollView(.horizontal, showsIndicators: false){
-                        HStack(spacing: 20){
-                            Text("Name").frame(width: 200, alignment: .leading)
+                        HStack(spacing: 0){
+                            Text("Name").frame(width: 216, alignment: .leading)
                                 .font(.custom("RobotoMono-Medium", size: 20))
                                 .foregroundStyle(colorManager.paleText)
-                            Text("Rating").frame(width: 110, alignment: .leading)
+                            Text("Rating").frame(width: 126, alignment: .leading)
                                 .font(.custom("RobotoMono-Medium", size: 20))
                                 .foregroundStyle(colorManager.paleText)
-                            Text("Comments").frame(width: 200, alignment: .leading)
+                            Text("Comments").frame(width: 316, alignment: .leading)
                                 .font(.custom("RobotoMono-Medium", size: 20))
                                 .foregroundStyle(colorManager.paleText)
                         }
+                        .padding(.leading, 45)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        
                     
                         watchList(media: "Movies", genre: "Romance", editView: true)
                 }
-                    .padding(.leading, 30)
+//                    .padding(.leading, 45)
+//                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
         }
